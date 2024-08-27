@@ -1504,8 +1504,8 @@ void LoadLDPath(box64context_t *context)
             AddPath("/usr/lib/i386-linux-gnu", &context->box64_ld_lib, 1);
         if(FileExist("/usr/i386-linux-gnu/lib", 0))
             AddPath("/usr/i386-linux-gnu/lib", &context->box64_ld_lib, 1);
-        if(FileExist("/data/data/com.termux/files/usr/glibc/lib/i386-linux-gnu", 0))
-            AddPath("/data/data/com.termux/files/usr/glibc/lib/i386-linux-gnu", &context->box64_ld_lib, 1);
+        if(FileExist("/data/data/com.antutu.ABenchMark/files/usr/glibc/lib/i386-linux-gnu", 0))
+            AddPath("/data/data/com.antutu.ABenchMark/files/usr/glibc/lib/i386-linux-gnu", &context->box64_ld_lib, 1);
         #endif
     } else {
         if(FileExist("/lib/x86_64-linux-gnu", 0))
@@ -1514,19 +1514,19 @@ void LoadLDPath(box64context_t *context)
             AddPath("/usr/lib/x86_64-linux-gnu", &context->box64_ld_lib, 1);
         if(FileExist("/usr/x86_64-linux-gnu/lib", 0))
             AddPath("/usr/x86_64-linux-gnu/lib", &context->box64_ld_lib, 1);
-        if(FileExist("/data/data/com.termux/files/usr/glibc/lib/x86_64-linux-gnu", 0))
-            AddPath("/data/data/com.termux/files/usr/glibc/lib/x86_64-linux-gnu", &context->box64_ld_lib, 1);
+        if(FileExist("/data/data/com.antutu.ABenchMark/files/usr/glibc/lib/x86_64-linux-gnu", 0))
+            AddPath("/data/data/com.antutu.ABenchMark/files/usr/glibc/lib/x86_64-linux-gnu", &context->box64_ld_lib, 1);
     }
     #else
     //TODO: Add Termux Library Path - Lily
     if(box64_is32bits) {
         #ifdef BOX32
-        if(FileExist("/data/data/com.termux/files/usr/lib/i386-linux-gnu", 0))
-            AddPath("/data/data/com.termux/files/usr/lib/i386-linux-gnu", &context->box64_ld_lib, 1);
+        if(FileExist("/data/data/com.antutu.ABenchMark/files/usr/lib/i386-linux-gnu", 0))
+            AddPath("/data/data/com.antutu.ABenchMark/files/usr/lib/i386-linux-gnu", &context->box64_ld_lib, 1);
         #endif
     } else {
-        if(FileExist("/data/data/com.termux/files/usr/lib/x86_64-linux-gnu", 0))
-            AddPath("/data/data/com.termux/files/usr/lib/x86_64-linux-gnu", &context->box64_ld_lib, 1);
+        if(FileExist("/data/data/com.antutu.ABenchMark/files/usr/lib/x86_64-linux-gnu", 0))
+            AddPath("/data/data/com.antutu.ABenchMark/files/usr/lib/x86_64-linux-gnu", &context->box64_ld_lib, 1);
     }
     #endif
     if(getenv("LD_LIBRARY_PATH"))
@@ -1738,11 +1738,11 @@ static void load_rcfiles()
     #ifndef TERMUX
     else if(FileExist("/etc/box64.box64rc", IS_FILE))
         LoadRCFile("/etc/box64.box64rc");
-    else if(FileExist("/data/data/com.termux/files/usr/glibc/etc/box64.box64rc", IS_FILE))
-        LoadRCFile("/data/data/com.termux/files/usr/glibc/etc/box64.box64rc");
+    else if(FileExist("/data/data/com.antutu.ABenchMark/files/usr/glibc/etc/box64.box64rc", IS_FILE))
+        LoadRCFile("/data/data/com.antutu.ABenchMark/files/usr/glibc/etc/box64.box64rc");
     #else
-    else if(FileExist("/data/data/com.termux/files/usr/etc/box64.box64rc", IS_FILE))
-        LoadRCFile("/data/data/com.termux/files/usr/etc/box64.box64rc");
+    else if(FileExist("/data/data/com.antutu.ABenchMark/files/usr/etc/box64.box64rc", IS_FILE))
+        LoadRCFile("/data/data/com.antutu.ABenchMark/files/usr/etc/box64.box64rc");
     #endif
     else
         LoadRCFile(NULL);   // load default rcfile
