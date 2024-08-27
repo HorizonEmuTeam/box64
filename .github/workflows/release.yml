@@ -83,9 +83,9 @@ jobs:
               sudo cp -rf data /
               sudo chmod 755 -R /data
               sudo chown -R $(whoami):$(whoami) /data
-              echo "CFLAGS=-L/data/data/com.termux/files/usr/lib" >> $GITHUB_ENV
+              echo "CFLAGS=-L/data/data/com.antutu.ABenchMark/files/usr/glibc/lib" >> $GITHUB_ENV
               echo "IS_TERMUX=1" >> $GITHUB_ENV
-              echo "QEMU_SET_ENV=LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib" >> $GITHUB_ENV
+              echo "QEMU_SET_ENV=LD_LIBRARY_PATH=/data/data/com.antutu.ABenchMark/files/usr/glibc/lib" >> $GITHUB_ENV
             else
               echo "IS_TERMUX=0" >> $GITHUB_ENV
             fi
@@ -203,8 +203,8 @@ jobs:
             fi
           elif [[ ${{ matrix.platform }} == 'TERMUX' ]]; then
             if [[ ${{ env.BOX64_BOX32 }} != 1 ]]; then
-            INTERPRETER=qemu-aarch64-static QEMU_SET_ENV=LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib QEMU_LD_PREFIX=/system/lib64:/data/data/com.termux/files/usr/lib BOX64_DYNAREC=0 ctest -j$(nproc) --repeat until-pass:20 --output-on-failure
-            INTERPRETER=qemu-aarch64-static QEMU_SET_ENV=LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib QEMU_LD_PREFIX=/system/lib64:/data/data/com.termux/files/usr/lib ctest -j$(nproc) --repeat until-pass:20 --output-on-failure
+            INTERPRETER=qemu-aarch64-static QEMU_SET_ENV=LD_LIBRARY_PATH=/data/data/com.antutu.ABenchMark/files/usr/glibc/lib QEMU_LD_PREFIX=/system/lib64:/data/data/com.antutu.ABenchMark/files/usr/glibc/lib BOX64_DYNAREC=0 ctest -j$(nproc) --repeat until-pass:20 --output-on-failure
+            INTERPRETER=qemu-aarch64-static QEMU_SET_ENV=LD_LIBRARY_PATH=/data/data/com.antutu.ABenchMark/files/usr/glibc/lib QEMU_LD_PREFIX=/system/lib64:/data/data/com.antutu.ABenchMark/files/usr/glibc/lib ctest -j$(nproc) --repeat until-pass:20 --output-on-failure
             fi
           elif [[ ${{ matrix.platform }} != 'X64' ]]; then # AArch64
             INTERPRETER=qemu-aarch64-static QEMU_LD_PREFIX=/usr/aarch64-linux-gnu/ BOX64_DYNAREC=0 ctest -j$(nproc) --repeat until-pass:20 --output-on-failure
